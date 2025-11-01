@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Requirements | Salabaca National High School</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* UPLOAD FORM STYLES */
+    .admissions {
+      max-width: 900px;
+      margin: 80px auto;
+      padding: 50px 20px;
+      border-radius: 20px;
+      backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.08);
+      text-align: center;
+    }
+
+    .admissions h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #ffdc73;
+    }
+
+    .admissions p {
+      margin-bottom: 40px;
+      font-size: 1.1em;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .admission-form {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 16px;
+      padding: 30px;
+      max-width: 700px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .admission-form label {
+      font-weight: 600;
+      text-align: left;
+    }
+
+    .admission-form input,
+    .admission-form select,
+    .admission-form textarea {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      width: 100%;
+    }
+
+    .admission-form small {
+      display: block;
+      text-align: left;
+      color: #ffdc73;
+      margin-top: -10px;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+
+    .apply-btn {
+      background: #ffdc73;
+      color: black;
+      padding: 12px 20px;
+      border-radius: 25px;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .apply-btn:hover {
+      background: white;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="image/logo.jpg" alt="School Logo">
+      <h1>Salabaca NHS</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="admission.html" class="active">Admissions</a></li>
+        <li><a href="registrar.html">Registrar</a></li>
+        <li><a href="jobs.html">Jobs</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Upload Requirements</h1>
+      <p>Submit your admission documents securely online.</p>
+    </div>
+  </section>
+
+  <!-- UPLOAD FORM -->
+  <section class="admissions">
+    <h2>Upload Your Documents</h2>
+    <p>Please upload all required documents for your admission.</p>
+
+    <div class="admission-form">
+      <form action="submit_upload.php" method="post" enctype="multipart/form-data">
+        <label>Full Name:</label>
+        <input type="text" name="fullname" placeholder="Enter your full name" required>
+
+        <label>Grade Level Applying For:</label>
+        <select name="grade_level" required>
+          <option value="">Select Grade Level</option>
+          <option>Grade 7</option>
+          <option>Grade 8</option>
+          <option>Grade 9</option>
+          <option>Grade 10</option>
+        </select>
+
+        <label>Upload Documents:</label>
+        <input type="file" name="documents[]" multiple required>
+        <small>Accepted: Form 138, Birth Certificate, Certificate of Good Moral, 2x2 picture, etc.</small>
+
+        <button type="submit" class="apply-btn">📤 Upload Documents</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Designed by <span id="designer-name" contenteditable="true">Keith Lagunday</span></p>
+    <small>© 2025 Salabaca National High School. All Rights Reserved.</small>
+  </footer>
+
+  <script>
+    // Save footer name to local storage
+    const nameSpan = document.getElementById("designer-name");
+    const savedName = localStorage.getItem("designerName");
+    if (savedName) nameSpan.textContent = savedName;
+    nameSpan.addEventListener("input", () => {
+      localStorage.setItem("designerName", nameSpan.textContent.trim());
+    });
+
+    // Form submission alert
+    document.querySelector("form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Your documents have been uploaded successfully!");
+      this.reset();
+    });
+  </script>
+</body>
+</html>
